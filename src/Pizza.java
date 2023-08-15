@@ -4,6 +4,12 @@ public class Pizza {
     private int extcheesePrice =100; 
     private int exttoppinPrice =150;
     private int packPrice =20;
+    private int baseprice;
+    private boolean isExtraCheeseAdded =false;
+    private boolean isExtraToppingsAdded =false;
+    private boolean isTakeAway =false;
+
+
 
     public Pizza(Boolean veg) {
         this.veg = veg;
@@ -13,23 +19,43 @@ public class Pizza {
         }else{
             this.price=400;
         }
+        baseprice=this.price;
     }
 
     public void addExCheese(){
-        System.out.println("added extra cheese");
+        isExtraCheeseAdded = true;
         this.price+=extcheesePrice;
     }
     public void addExTopping(){
-        System.out.println("added extra topping");
+        isExtraToppingsAdded = true;
         this.price+=exttoppinPrice;
     }
     public void pack(){
-        System.out.println("take away");
+        isExtraCheeseAdded = true;
         this.price+=packPrice;
     }
     public void getBill(){
-        System.out.println(this.price);
+        String bill = "";
+        System.out.println("pizza: "+baseprice);
+        if (isExtraCheeseAdded){
+            bill += "extra cheese added: "+extcheesePrice+ "\n";
+        }
+        if (isExtraToppingsAdded){
+            bill += "extra toppings added: "+exttoppinPrice+ "\n";
+        }
+        if (isTakeAway){
+            bill += "Take Away: "+packPrice+ "\n";
+        }
+        bill+= "Bill: "+this.price+"\n";
+        System.out.println(bill);
     }
+
+    /*
+    * pizza:
+    * extra cheese added:
+    * extra toppings added:
+    * Take Away:
+    * */
 
 
 
